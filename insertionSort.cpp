@@ -8,15 +8,16 @@ void printSortedArray(int *arr,int n){
     cout<<endl;
 }
 
-void bubbleSort(int arr[],int n){
-    for(int i=0;i<n-1;i++){
-        int minIndex=i;
-        for(int j=i+1;j<n;j++){
-            if(arr[minIndex]>arr[j]){
-                minIndex=j;
-            }
-            swap(arr[minIndex],arr[i]);
+void insertionSort(int arr[],int n){
+    for(int i=1;i<n;i++){
+        int current =arr[i];
+        int pre=i-1;
+        while(pre>=0&&arr[pre]>current){
+            swap(arr[pre],arr[pre+1]);
+            pre--;
         }
+        arr[pre+1]=current;
+
     }
     printSortedArray(arr,n);
 }
@@ -24,7 +25,7 @@ void bubbleSort(int arr[],int n){
 int main(){
    int arr[]={5,4,1,3,2};
    int n =sizeof(arr)/sizeof(int);
- bubbleSort(arr,n);
+ insertionSort(arr,n);
 
     return 0;
 }
